@@ -1,11 +1,22 @@
-import React from 'react'
-import {View, StyleSheet, TextInput, Button} from 'react-native'
+import React, {useState} from 'react'
+import {View, StyleSheet, TextInput, Button,Alert} from 'react-native'
 
-export function Form() {
+export function Form({onSubmit}) {
+    const [inputValue,setInputValue] = useState('')
+
+    const handlePress = () => {
+        if (inputValue.trim()){
+            onSubmit(inputValue)
+            setInputValue('')
+        }else{
+            Alert.alert('Please enter todo title')
+        }
+    }
+
     return(
         <View style={styles.wrapper}>
-        <TextInput style={styles.input}/>
-        <Button title='Add'  style={styles.button}/>
+        <TextInput autoCorrect={false} style={styles.input} placeholder='Enter your todo' onChangeText={text => setInputValue(text)} value={inputValue}/>
+        <Button title='Add' style={styles.button} onPress={handlePress}/>
         </View>
     )
 }
