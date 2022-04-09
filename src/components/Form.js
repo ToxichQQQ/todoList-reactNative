@@ -1,41 +1,65 @@
-import React, {useState} from 'react'
-import {View, StyleSheet, TextInput, Button,Alert} from 'react-native'
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  Alert,
+  Text,
+} from "react-native";
+import { THEME } from "../theme";
 
-export function Form({onSubmit}) {
-    const [inputValue,setInputValue] = useState('')
+export function Form({ onSubmit }) {
+  const [inputValue, setInputValue] = useState("");
 
-    const handlePress = () => {
-        if (inputValue.trim()){
-            onSubmit(inputValue)
-            setInputValue('')
-        }else{
-            Alert.alert('Please enter todo title')
-        }
+  const handlePress = () => {
+    if (inputValue.trim()) {
+      onSubmit(inputValue);
+      setInputValue("");
+    } else {
+      Alert.alert("Please enter todo title");
     }
+  };
 
-    return(
-        <View style={styles.wrapper}>
-        <TextInput autoCorrect={false} style={styles.input} placeholder='Enter your todo' onChangeText={text => setInputValue(text)} value={inputValue}/>
-        <Button title='Add' style={styles.button} onPress={handlePress}/>
-        </View>
-    )
+  return (
+    <View style={styles.wrapper}>
+      <TextInput
+        autoCorrect={false}
+        style={styles.input}
+        placeholder="Enter your todo"
+        onChangeText={(text) => setInputValue(text)}
+        value={inputValue}
+      />
+      <Pressable style={styles.button} onPress={handlePress}>
+        <Text style={styles.buttonText}>Add</Text>
+      </Pressable>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    wrapper:{
-        flexDirection:'row',
-        justifyContent:'space-between'
-    },
-    input:{
-        width:'70%',
-        borderWidth:1,
-        borderColor:'red',
-        color:'#fff'
-    },
-    button:{
-        textAlign:'center',
-        color:'#fff',
-        borderWidth:1,
-        borderColor:'red'
-    }
-})
+  wrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+  },
+  input: {
+    width: "82%",
+    borderWidth: 1,
+    borderBottomColor: THEME.LIGHT_GREY,
+    color: THEME.WHITE_TEXT,
+  },
+  button: {
+    textAlign: "center",
+    borderWidth: 1,
+    borderRadius: 4,
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+    borderColor: THEME.GOLD_COLOR,
+    margin: 0,
+  },
+  buttonText: {
+    color: THEME.WHITE_TEXT,
+    fontSize: 14,
+  },
+});
