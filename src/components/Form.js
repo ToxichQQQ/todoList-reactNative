@@ -6,6 +6,7 @@ import {
   Pressable,
   Alert,
   Text,
+  Keyboard
 } from "react-native";
 import { THEME } from "../theme";
 
@@ -16,6 +17,7 @@ export function Form({ onSubmit }) {
     if (inputValue.trim()) {
       onSubmit(inputValue);
       setInputValue("");
+      Keyboard.dismiss()
     } else {
       Alert.alert("Please enter todo title");
     }

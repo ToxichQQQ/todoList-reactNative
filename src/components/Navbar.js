@@ -12,12 +12,12 @@ export function Navbar({ title }) {
 
 const styles = StyleSheet.create({
   navbar: {
-    height: 70,
-    fontSize: 16,
+    height: 90,
     alignItems: "center",
     justifyContent: "flex-end",
   },
   text: {
     color: THEME.WHITE_TEXT,
+    fontSize: 24
   },
 });
