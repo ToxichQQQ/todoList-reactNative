@@ -6,7 +6,7 @@ import {
   Button,
   TextInput,
   Alert,
-  Keyboard
+  Keyboard,
 } from "react-native";
 import { THEME } from "../theme";
 
@@ -21,7 +21,7 @@ export function EditModal({ isOpen, todo, handleHideModal, onSave }) {
       );
     } else {
       onSave(title);
-      Keyboard.dismiss()
+      Keyboard.dismiss();
     }
   };
 

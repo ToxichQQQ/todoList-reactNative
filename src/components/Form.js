@@ -3,11 +3,11 @@ import {
   View,
   StyleSheet,
   TextInput,
-  Pressable,
   Alert,
   Text,
-  Keyboard
+  Keyboard,
 } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import { THEME } from "../theme";
 
 export function Form({ onSubmit }) {
@@ -17,7 +17,7 @@ export function Form({ onSubmit }) {
     if (inputValue.trim()) {
       onSubmit(inputValue);
       setInputValue("");
-      Keyboard.dismiss()
+      Keyboard.dismiss();
     } else {
       Alert.alert("Please enter todo title");
     }
@@ -32,9 +32,13 @@ export function Form({ onSubmit }) {
         onChangeText={(text) => setInputValue(text)}
         value={inputValue}
       />
-      <Pressable style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Add</Text>
-      </Pressable>
+      <AntDesign.Button
+        style={styles.button}
+        onPress={handlePress}
+        name="pluscircleo"
+      >
+        Add
+      </AntDesign.Button>
     </View>
   );
 }
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   input: {
-    width: "82%",
+    width: "70%",
     borderWidth: 1,
     borderBottomColor: THEME.LIGHT_GREY,
     color: THEME.WHITE_TEXT,

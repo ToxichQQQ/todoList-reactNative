@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Button } from "react-native";
+import { Text, StyleSheet, View, Button,Dimensions} from "react-native";
 import { THEME } from "../theme";
 import { EditModal } from "../components/EditModal";
 
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
   },
   buttonsContainer: {
-    height: "90%",
+    height: Dimensions.get('screen').height * 0.7,
     paddingTop: 10,
     flexDirection: "row",
     justifyContent: "space-around",

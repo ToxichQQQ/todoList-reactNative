@@ -5,16 +5,16 @@ Created a ToDo List application tasks throughout the day/week/month. In the proc
 # Application Features:
 
 - Enter cases
- - Delete with a long press
- - Open a case on a separate page
- - Confirmation before deletion
- - Can't add case less than three symbols
- 
- # Stack Technologies
- 
-- React Native 
-- Ant Design 
+- Delete with a long press
+- Open a case on a separate page
+- Confirmation before deletion
+- Can't add case less than three symbols
 
+# Stack Technologies
+
+- React Native
+- Ant Design
 
 # Thanks for your attention
+
 You can contact me by this email storozhenko.dev@gmail.com

@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: THEME.WHITE_TEXT,
-    fontSize: 24
+    fontSize: 24,
   },
 });
