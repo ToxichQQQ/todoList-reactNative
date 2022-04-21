@@ -8,53 +8,39 @@ import {TodoContext} from "./context/todo/TodoContext";
 
 
 export const MainLayout = () => {
-    const todoContext = useContext(TodoContext)
-    const [todos, setTodos] = useState([
-    ]);
-    const [todoId, setTodoId] = useState(null);
+    const {todos, handleAddTodo, handleDeleteTodo,handleUpdateTodo} = useContext(TodoContext)
 
-    const handleAddTodo = (title) => {
-        setTodos([...todos, { id: Date.now().toString(), title, isDone: false }]);
-    };
+
+    const [todoId, setTodoId] = useState(null);
 
     const handleSelectTodo = (id) => {
         setTodoId(id);
     };
 
-    const handleUpdateTodo = (id, title) => {
-        setTodos((prevState) =>
-            prevState.map((todo) => {
-                if (todo.id === id) {
-                    todo.title = title;
-                }
-                return todo;
-            })
-        );
-    };
 
-    const handleRemoveTodo = (id) => {
+/*    const handleRemoveTodo = (id) => {
         const todoInfo = todos.find((todo) => todo.id === id);
         Alert.alert(
             "Delete this Todo",
             `Do you really want to delete this ${todoInfo.title}`,
             [
-                { text: "Cancel", style: "cancel" },
+                {text: "Cancel", style: "cancel"},
                 {
                     text: "Delete",
                     style: "destructive",
                     onPress: () => setTodos(todos.filter((todo) => todo.id !== id)),
                 },
             ],
-            { cancelable: false }
+            {cancelable: false}
         );
-    };
+    };*/
 
     let content = (
         <MainScreen
             handleAddTodo={handleAddTodo}
-            handleRemoveTodo={handleRemoveTodo}
+            handleRemoveTodo={handleDeleteTodo}
             handleSelectTodo={handleSelectTodo}
-            todos={todoContext.todos}
+            todos={todos}
         />
     );
 
@@ -65,7 +51,7 @@ export const MainLayout = () => {
                 handleUpdateTodo={handleUpdateTodo}
                 todoInfo={todoInfo}
                 handleSelectTodo={handleSelectTodo}
-                handleRemoveTodo={handleRemoveTodo}
+                handleRemoveTodo={handleDeleteTodo}
             />
         );
     }
