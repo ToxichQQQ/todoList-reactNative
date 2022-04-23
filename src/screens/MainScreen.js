@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Form } from "../components/Form";
 import { FlatList, View } from "react-native";
 import { Todo } from "../components/Todo";
 import { NoTodos } from "../components/NoTodos";
+import {TodoContext} from "../context/todo/TodoContext";
+import {ScreenContext} from "../context/screen/ScreenContext";
 
-export function MainScreen({
-  handleAddTodo,
-  handleRemoveTodo,
-  handleSelectTodo,
-  todos,
-}) {
+export function MainScreen() {
+  const {todos,handleAddTodo, handleRemoveTodo} = useContext(TodoContext)
+    const {handleChangeScreen} = useContext(ScreenContext)
+
   let content = (
     <FlatList
       data={todos}
@@ -17,7 +17,7 @@ export function MainScreen({
         <Todo
           onRemove={handleRemoveTodo}
           todo={item}
-          handleSelectTodo={handleSelectTodo}
+          handleSelectTodo={handleChangeScreen}
         />
       )}
       keyExtractor={(item) => item.id.toString()}

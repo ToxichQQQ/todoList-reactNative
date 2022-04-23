@@ -25,6 +25,11 @@ export function EditModal({ isOpen, todo, handleHideModal, onSave }) {
     }
   };
 
+  const handleCancel = () => {
+    setTitle(todo.title)
+    handleHideModal()
+  }
+
   return (
     <Modal visible={isOpen} animationType="slide" transparent={false}>
       <View style={styles.modal}>
@@ -38,7 +43,7 @@ export function EditModal({ isOpen, todo, handleHideModal, onSave }) {
           <Button
             color={THEME.DANGER_COLOR}
             title="Cancel"
-            onPress={() => handleHideModal()}
+            onPress={handleCancel}
           />
         </View>
       </View>

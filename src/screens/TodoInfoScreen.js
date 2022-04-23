@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { Text, StyleSheet, View, Button,Dimensions} from "react-native";
+import React, {useContext, useState} from "react";
+import { Text, StyleSheet, View, Button, Dimensions } from "react-native";
 import { THEME } from "../theme";
 import { EditModal } from "../components/EditModal";
+import {TodoContext} from "../context/todo/TodoContext";
+import {ScreenContext} from "../context/screen/ScreenContext";
 
 export function TodoInfoScreen({
-  todoInfo,
-  handleSelectTodo,
-  handleRemoveTodo,
-  handleUpdateTodo,
 }) {
+  const {handleUpdateTodo, handleRemoveTodo,todos} = useContext(TodoContext)
+  const { handleChangeScreen,todoId } = useContext(ScreenContext)
   const [isOpen, setOpen] = useState(false);
+
+  const todoInfo = todos.find(item => item.id === todoId)
 
   const handleSave = (title) => {
     handleUpdateTodo(todoInfo.id, title);
@@ -17,7 +19,7 @@ export function TodoInfoScreen({
   };
 
   const handleDeleteTodo = () => {
-    handleSelectTodo(null);
+    handleChangeScreen(null);
     handleRemoveTodo(todoInfo.id);
   };
 
@@ -41,7 +43,7 @@ export function TodoInfoScreen({
           <Button
             title="Back"
             color={THEME.GREY_COLOR}
-            onPress={() => handleSelectTodo(null)}
+            onPress={() => handleChangeScreen(null)}
           />
         </View>
         <View style={styles.button}>
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
   },
   buttonsContainer: {
-    height: Dimensions.get('screen').height * 0.7,
+    height: Dimensions.get("screen").height * 0.7,
     paddingTop: 10,
     flexDirection: "row",
     justifyContent: "space-around",
