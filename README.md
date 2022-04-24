@@ -13,7 +13,9 @@ Created a ToDo List application tasks throughout the day/week/month. In the proc
 # Stack Technologies
 
 - React Native
+- React Context
 - Ant Design
+- Firebase
 
 # Thanks for your attention
 
